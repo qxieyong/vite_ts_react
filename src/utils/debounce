@@ -1,8 +1,8 @@
 const debounce = function (func: Function, wait: number) {
-    let timeout: number | undefined;
+    let timeout: NodeJS.Timeout | null = null;
     return function (this: any, ...args: any[]) {
         const context = this;
-        clearTimeout(timeout);
+        timeout && clearTimeout(timeout);
         timeout = setTimeout(() => {
             func.apply(context, args);
         }, wait);
