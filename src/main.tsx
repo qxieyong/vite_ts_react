@@ -9,13 +9,17 @@ import "@/utils/adaptation";
 import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-
+import autoUpdate from "@/utils/autoUpdate";
 
 import "@/utils/language/index"; // 导入i18n配置
 
 // 引入antd.css
 import "antd/dist/reset.css";
 
+
+if(import.meta.env.MODE != "development"){
+    autoUpdate();
+}
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   // <React.StrictMode>
